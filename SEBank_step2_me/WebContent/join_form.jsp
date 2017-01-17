@@ -5,7 +5,7 @@
 <head>
 <script type="text/javascript">
 	function check_id() {
-		
+		window.open("check_id.jsp",null,"width=300, height=300, location=no, resizable=no");
 	}
 </script>
 <title>회원가입은 회원가입</title>
