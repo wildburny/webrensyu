@@ -9,6 +9,28 @@ import sebank.vo.Customer;
 
 public class CustomerDAO {
 
+	public boolean check_id(String id) {
+		boolean result = false;
+		Connection con = ConnectionManager.getConnection();
+		String sql = "select * from customer where custid = ?";
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			ResultSet rs = pstmt.executeQuery();
+			result = rs.next();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			try {
+				con.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		} finally {
+			ConnectionManager.close(con);
+		}
+		return result;
+	}
+
 	public int insertCustomer(Customer c) {
 		int result = 0;
 		Connection con = ConnectionManager.getConnection();

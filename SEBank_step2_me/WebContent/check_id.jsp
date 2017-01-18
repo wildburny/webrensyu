@@ -3,23 +3,49 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link
+	href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext"
+	rel="stylesheet" type="text/css">
 <style type="text/css">
-span {
-	font-size: 30px;
-	font-weight: bold;
-	padding-left: 15%;
+#div_header {
+	font-family: 'Lobster';
+	background-color: #ff9400;
+	margin-top: 0;
+	padding: 20px 20px 20px 40px;
+}
+
+#div_middle {
+	background-color: #f2f2f2;
+	height: 140px;
 }
 </style>
+<script type="text/javascript">
+	function check_id() {
+		var id = document.getElementById('id').value;
+		var len = id.length;
+		console.log(len);
+		if (len < 3 || len > 10) {
+			alert('아이디는 3~10자 !');
+			return false;
+		}
+		return true;
+	}
+</script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>중붥?</title>
 </head>
-<body style="background-color: honeydew">
-	<span>[ ID 중붥 확인 ]</span>
-	<form action="">
+<body>
+	<div id="div_header">
+		<h1>[ ID 중붥 확인 ]</h1>
+	</div>
 	<br>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<input type="text" name="id" id="id" placeholder="아이디 입력">
-		&nbsp; <input type="submit" value="확인">
-	</form>
+	<div id="div_middle">
+		<form action="CustomerServlet" method="post" onsubmit="return check_id();"><br>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		<input type="text" name="id" id="id" placeholder="아이디 입력"> &nbsp; 
+		<input type="submit" value="확인"> 
+		<input type="hidden" name="action" value="check_id">
+		</form>
+	</div>
 </body>
 </html>

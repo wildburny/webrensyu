@@ -3,53 +3,50 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link
+	href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext"
+	rel="stylesheet" type="text/css">
 <title>타이틀은타이틀</title>
 <style>
-#div1 {
-	margin-top: 10%;
-	margin-left: 36%;
-	margin-right: 36%;
-	margin-bottom: 10%;
+#div_header {
+	font-family: 'Lobster';
+	background-color: #ff9400;
+	margin-top: 0;
+	padding: 20px 20px 20px 40px;
 }
 
-#div2 {
-	background-color: honeydew;
-	text-align: center;
-	border: double;
-	width: 100%;
-	height: 50%;
+#div_middle {
+	background-color: #f2f2f2;
 }
 
-span {
-	font-size: 150%;
-	font-weight: bold;
-	color: cadetblue;
+ul {
+	color: #ff9400;
+	font-weight: bolder;
 }
 
-li {
-	text-align: left;
+a:VISITED {
+	color: #ff9400;
 }
 </style>
 </head>
 <body>
-	<div id="div1">
-		<h1 style="text-align: center">웰컴웰컴</h1>
-		<div id="div2">
-			<br> <span>[SES Bank Step 2 (Model 2)]</span><br> <br>
-			<br>
-			<ul>
-				<li><a href="CustomerServlet?action=join_form">회원가입</a></li>
-				<br>
-				<li><a href="CustomerServlet?action=login_form">로그인</a></li>
-				<br>
-				<li><a href="CustomerServlet?action=logout">로그아웃</a></li>
-				<br>
-				<li><a href="CustomerServlet?action=update_form">개인정보수정</a></li>
-				<br>
-				<li><a href="#">게시판</a></li>
-			</ul>
-		</div>
+	<div id="div_header">
+		<h1>[SES Bank Step 2 (Model 2)]</h1>
 	</div>
+	<div id="div_middle">
+		<ul>
+			<li><a href="CustomerServlet?action=join_form">회원가입</a></li>
+			<br>
+			<li><a href="CustomerServlet?action=login_form">로그인</a></li>
+			<br>
+			<li><a href="CustomerServlet?action=logout">로그아웃</a></li>
+			<br>
+			<li><a href="CustomerServlet?action=update_form">개인정보수정</a></li>
+			<br>
+			<li><a href="#">게시판</a></li>
+		</ul>
+	</div>
+
 
 </body>
 </html>
