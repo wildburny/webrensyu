@@ -8,8 +8,52 @@
 	rel="stylesheet" type="text/css">
 <script type="text/javascript">
 	function check_id() {
-		window.open("check_id.jsp", null, "width=300, height=300, left=300, location=no, resizable=no");
+		window.open("check_id.jsp", null, "width=300, height=380, left=300, location=no, resizable=no");
+	}
 
+	function check_form() {
+		var custid = document.getElementById("custid").value;
+		if (custid.length < 3 || custid.length > 10) {
+			alert("아이디는 3~10자 입니다!");
+			return false;
+		}
+		var password = document.getElementById("password").value;
+		if (password.length < 3 || password.length > 10) {
+			alert("패스워드는 3~10자 입니다!");
+			return false;
+		}
+		var password_two = document.getElementById("password_two").value;
+		if (password_two.length < 3 || password_two.length > 10) {
+			alert("패스워드는 3~10자 입니다!");
+			return false;
+		}
+
+		if (password != password_two) {
+			alert("비밀번호가 일치하지 않습니다!");
+			return false;
+		}
+
+		var name = document.getElementById("name").value;
+		if (name.length < 3 || name.length > 10) {
+			alert("이름을 확인해주세요!");
+			return false;
+		}
+		var email = document.getElementById("email").value;
+		if (email.length < 3) {
+			alert("이메일 주소를 확인해주세요!");
+			return false;
+		}
+		var idno = document.getElementById("idno").value;
+		if (idno.length < 3) {
+			alert("식별번호를 확인해주세요!");
+			return false;
+		}
+		var address = document.getElementById("address").value;
+		if (address.length < 3) {
+			alert("주소를 확인해주세요!");
+			return false;
+		}
+		return true;
 	}
 </script>
 <title>회원가입은 회원가입</title>
@@ -43,7 +87,9 @@ td {
 		<h1>[회원가입]</h1>
 	</div>
 	<div id="div_middle">
-		<form action="" onsubmit="return check_form();">
+		<form action="CustomerServlet" method="post"
+			onsubmit="return check_form();">
+			<input type="hidden" name="action" value="join">
 			<table>
 				<tr height="50">
 					<td>고객ID</td>
@@ -88,12 +134,28 @@ td {
 						placeholder="쥬쇼와난데스까?"></td>
 				</tr>
 				<tr height="50">
-					<td colspan="2">
-					<input type="submit" value="가입"> <input type="reset" value="다시 쓰기">
-					</td>
+					<td colspan="2"><input type="submit" value="가입"> <input
+						type="reset" value="다시 쓰기"></td>
 				</tr>
 			</table>
 		</form>
 	</div>
+	<%
+		if (request.getMethod().equalsIgnoreCase("GET"))
+			return;
+	%>
+
+	<%
+		String isNotOK = (String) request.getAttribute("isNotOK");
+		if (isNotOK.equals("true")) {
+	%>
+	<script>alert("회원가입 실패!")</script>
+	<%
+		} else {
+	%>
+	<script>alert("회원가입 성공!"); location.href='index.jsp';</script>
+	<%
+		}
+	%>
 </body>
 </html>

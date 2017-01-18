@@ -45,6 +45,13 @@ a:VISITED {
 			<br>
 			<li><a href="#">게시판</a></li>
 		</ul>
+		<%
+		if(session.getAttribute("custid") != null){
+		%>
+		<h3>${custid }님 로그인 중!</h3>
+		<%
+		}
+		%>
 	</div>
 
 
