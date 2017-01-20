@@ -33,6 +33,11 @@
 		}
 		return true;
 	}
+	
+	function login_msg(){
+		var msg = ${custid} + '님 환영합니다!';
+		alert(msg);
+	}
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>로그인은 로그인</title>
@@ -73,10 +78,13 @@
 
 	<%
 		String custid = (String) session.getAttribute("custid");
-		if (custid != null) {
+		if (custid.length() != 0) {
 	%>
-	<script>alert(${custid} + " 님 환영합니다!"); window.close();
-	opener.location.reload();
+	<h1>${custid }</h1>
+	<script>
+	 	login_msg();
+	 	window.close();
+		opener.location.reload();
 	</script>
 	<%
 		}
