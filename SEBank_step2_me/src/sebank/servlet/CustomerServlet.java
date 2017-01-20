@@ -70,7 +70,10 @@ public class CustomerServlet extends HttpServlet {
 			request.getSession().removeAttribute("custid");
 			request.getRequestDispatcher("index.jsp").forward(request, response);
 		} else if (action.equals("update_form")) {
-
+			String custid = (String) request.getSession().getAttribute("custid");
+			Customer c = new CustomerDAO().selectCustomer(custid);
+			request.setAttribute("customer", c);
+			request.getRequestDispatcher("update_form.jsp").forward(request, response);
 		} else if (action.equals("check_id")) {
 			String id = request.getParameter("id");
 			if (!new CustomerDAO().check_id(id)) {
