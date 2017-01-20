@@ -60,14 +60,13 @@ public class CustomerDAO {
 		return result;
 	}
 
-	public Customer selectCustomer(String custid, String password) {
+	public Customer selectCustomer(String custid) {
 		Customer customer = null;
 		Connection con = ConnectionManager.getConnection();
-		String sql = "select * from customer where custid = ? and password = ?";
+		String sql = "select * from customer where custid = ?";
 		try {
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, custid);
-			pstmt.setString(2, password);
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				customer = new Customer(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),

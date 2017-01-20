@@ -27,31 +27,48 @@ ul {
 a:VISITED {
 	color: #ff9400;
 }
+
+h3 {
+	color: #ff9400;
+}
 </style>
 </head>
 <body>
 	<div id="div_header">
 		<h1>[SES Bank Step 2 (Model 2)]</h1>
 	</div>
+	<%
+		String custid = (String) session.getAttribute("custid");
+	%>
 	<div id="div_middle">
+		<%
+			if (custid != null) {
+		%>
+		<h3>${custid }님 접속중...!</h3>
+		<%-- <h3><%= custid %>님 접속중...!</h3> --%>
+		<%
+			}
+		%>
 		<ul>
+			<%
+				if (custid == null) {
+			%>
 			<li><a href="CustomerServlet?action=join_form">회원가입</a></li>
 			<br>
 			<li><a href="CustomerServlet?action=login_form">로그인</a></li>
+			<%
+				} else {
+			%>
 			<br>
 			<li><a href="CustomerServlet?action=logout">로그아웃</a></li>
 			<br>
 			<li><a href="CustomerServlet?action=update_form">개인정보수정</a></li>
 			<br>
 			<li><a href="#">게시판</a></li>
+			<%
+				}
+			%>
 		</ul>
-		<%
-		if(session.getAttribute("custid") != null){
-		%>
-		<h3>${custid }님 로그인 중!</h3>
-		<%
-		}
-		%>
 	</div>
 
 

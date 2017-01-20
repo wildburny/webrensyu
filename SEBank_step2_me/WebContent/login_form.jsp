@@ -17,6 +17,7 @@
 #div_middle {
 	background-color: #f2f2f2;
 	height: 200px;
+	padding-top: 30px;
 }
 </style>
 <script type="text/javascript">
