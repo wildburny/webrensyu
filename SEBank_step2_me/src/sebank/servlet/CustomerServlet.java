@@ -7,7 +7,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import sebank.dao.CustomerDAO;
 import sebank.vo.Customer;
@@ -54,9 +53,9 @@ public class CustomerServlet extends HttpServlet {
 			Customer c = new CustomerDAO().selectCustomer(custid);
 			if (c != null) {
 				request.getSession().setAttribute("custid", c.getCustid());
-				out.println("<script>alert(\"success\");" + "location.href=\"index.jsp\";</script>");
+				out.println("<script>alert(\"어서와~이런곳은 처음이지?\");" + "location.href=\"index.jsp\";</script>");
 			} else {
-				out.println("<script>alert(\"fail...\");" + "history.go(-1);</script>");
+				out.println("<script>alert(\"나가ㅡㅡ\");" + "history.go(-1);</script>");
 			}
 			/*
 			 * String find_id = request.getParameter("custid"); String
@@ -88,9 +87,9 @@ public class CustomerServlet extends HttpServlet {
 			Customer customer = new Customer(custid, password, name, email, division, idno, address);
 			if (new CustomerDAO().updateCustomer(customer) != 0) {
 				request.getSession().setAttribute("custid", customer.getCustid());
-				out.println("<script>alert(\"success\");" + "location.href=\"index.jsp\";</script>");
+				out.println("<script>alert(\"수정했따!\");" + "location.href=\"index.jsp\";</script>");
 			} else {
-				out.println("<script>alert(\"fail...\");" + "history.go(-1);</script>");
+				out.println("<script>alert(\"뭐야\");" + "history.go(-1);</script>");
 			}
 		} else if (action.equals("check_id")) {
 			String id = request.getParameter("id");

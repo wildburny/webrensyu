@@ -16,8 +16,12 @@
 
 #div_middle {
 	background-color: #f2f2f2;
-	height: 200px;
-	padding-top: 30px;
+	padding: 20px 20px 20px 40px;
+}
+
+td {
+	font-weight: bold;
+	text-align: left;
 }
 </style>
 <script type="text/javascript">
@@ -54,20 +58,23 @@
 			<input type="hidden" name="action" value="login">
 			<table>
 				<tbody>
-					<tr>
+					<tr height="50">
 						<td>고객 ID</td>
 						<td><input type="text" name="custid" id="custid"
 							placeholder="ID 입력"></td>
 					</tr>
-					<tr>
+					<tr height="50">
 						<td>비밀번호</td>
 						<td><input type="password" name="password" id="password"
 							placeholder="비밀번호 입력"></td>
 					</tr>
-					<tr>
+					<tr height="50">
 						<td colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
 							type="submit" value="로그인"> <input type="button"
 							value="돌아가기" onclick="window.close();">
+						</td>
+					</tr>
+
 				</tbody>
 			</table>
 		</form>

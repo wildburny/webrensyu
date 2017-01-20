@@ -19,8 +19,7 @@
 
 #div_middle {
 	background-color: #f2f2f2;
-	padding-top: 30px;
-	padding-bottom: 30px;
+	padding: 20px 20px 20px 40px;
 }
 
 li {

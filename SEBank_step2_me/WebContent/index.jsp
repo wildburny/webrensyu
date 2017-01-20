@@ -17,15 +17,16 @@
 
 #div_middle {
 	background-color: #f2f2f2;
+	padding: 20px 20px 20px 40px;
 }
 
 ul {
-	color: #ff9400;
 	font-weight: bolder;
+	color: black;
 }
 
 a:VISITED {
-	color: #ff9400;
+	color: black;
 }
 
 h3 {
@@ -40,6 +41,7 @@ h3 {
 	<%
 		String custid = (String) session.getAttribute("custid");
 	%>
+	<br>
 	<div id="div_middle">
 		<%
 			if (custid != null) {
