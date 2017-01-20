@@ -10,3 +10,5 @@ create table customer(
 )
 
 insert into CUSTOMER values ('1','1','1','1','personal','1','1');
+
+update customer set password = '9999', name = '9999', email = '9999' where custid = '999';

@@ -43,29 +43,32 @@ public class CustomerServlet extends HttpServlet {
 				request.getRequestDispatcher("join_form.jsp").forward(request, response);
 			}
 		} else if (action.equals("login_form")) {
-			 request.getRequestDispatcher("login_form.jsp").forward(request, response);
-			/*out.println(
-					"<script>window.open('login_form.jsp', null, 'width=300, height=380, left=300, location=no, resizable=no');"
-							+ "history.go(-1);</script>");*/
+			request.getRequestDispatcher("login_form.jsp").forward(request, response);
+			/*
+			 * out.println(
+			 * "<script>window.open('login_form.jsp', null, 'width=300, height=380, left=300, location=no, resizable=no');"
+			 * + "history.go(-1);</script>");
+			 */
 		} else if (action.equals("login")) {
 			String custid = request.getParameter("custid");
 			Customer c = new CustomerDAO().selectCustomer(custid);
 			if (c != null) {
 				request.getSession().setAttribute("custid", c.getCustid());
-				out.println("<script>alert(\"success\");" + "location.href=\"index.jsp\";</script>"); 
+				out.println("<script>alert(\"success\");" + "location.href=\"index.jsp\";</script>");
 			} else {
 				out.println("<script>alert(\"fail...\");" + "history.go(-1);</script>");
 			}
-			/*String find_id = request.getParameter("custid");
-			String find_password = request.getParameter("password");
-			Customer find_customer = new CustomerDAO().selectCustomer(find_id, find_password);
-			if (find_customer != null) {
-				HttpSession session = request.getSession();
-				session.setAttribute("custid", find_id);
-				request.getRequestDispatcher("login_form.jsp").forward(request, response);
-			} else {
-				out.println("<script>alert('로그인 실패!');history.go(-1);</script>");
-			}*/
+			/*
+			 * String find_id = request.getParameter("custid"); String
+			 * find_password = request.getParameter("password"); Customer
+			 * find_customer = new CustomerDAO().selectCustomer(find_id,
+			 * find_password); if (find_customer != null) { HttpSession session
+			 * = request.getSession(); session.setAttribute("custid", find_id);
+			 * request.getRequestDispatcher("login_form.jsp").forward(request,
+			 * response); } else {
+			 * out.println("<script>alert('로그인 실패!');history.go(-1);</script>");
+			 * }
+			 */
 		} else if (action.equals("logout")) {
 			request.getSession().removeAttribute("custid");
 			request.getRequestDispatcher("index.jsp").forward(request, response);
@@ -74,6 +77,21 @@ public class CustomerServlet extends HttpServlet {
 			Customer c = new CustomerDAO().selectCustomer(custid);
 			request.setAttribute("customer", c);
 			request.getRequestDispatcher("update_form.jsp").forward(request, response);
+		} else if (action.equals("update")) {
+			String custid = request.getParameter("custid");
+			String password = request.getParameter("password");
+			String name = request.getParameter("name");
+			String email = request.getParameter("email");
+			String division = request.getParameter("division");
+			String idno = request.getParameter("idno");
+			String address = request.getParameter("address");
+			Customer customer = new Customer(custid, password, name, email, division, idno, address);
+			if (new CustomerDAO().updateCustomer(customer) != 0) {
+				request.getSession().setAttribute("custid", customer.getCustid());
+				out.println("<script>alert(\"success\");" + "location.href=\"index.jsp\";</script>");
+			} else {
+				out.println("<script>alert(\"fail...\");" + "history.go(-1);</script>");
+			}
 		} else if (action.equals("check_id")) {
 			String id = request.getParameter("id");
 			if (!new CustomerDAO().check_id(id)) {

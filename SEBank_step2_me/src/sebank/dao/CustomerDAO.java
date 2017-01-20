@@ -91,16 +91,14 @@ public class CustomerDAO {
 	public int updateCustomer(Customer c) {
 		int result = 0;
 		Connection con = ConnectionManager.getConnection();
-		String sql = "update customer set password = ?, name = ?, email = ?, division = ?, idno = ?, address = ? where custid = ?";
+		String sql = "update customer set password = ?, name = ?, email = ?, address = ? where custid = ?";
 		try {
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, c.getPassword());
 			pstmt.setString(2, c.getName());
 			pstmt.setString(3, c.getEmail());
-			pstmt.setString(4, c.getDivision());
-			pstmt.setString(5, c.getIdno());
-			pstmt.setString(6, c.getAddress());
-			pstmt.setString(7, c.getCustid());
+			pstmt.setString(4, c.getAddress());
+			pstmt.setString(5, c.getCustid());
 			result = pstmt.executeUpdate();
 			pstmt.close();
 
