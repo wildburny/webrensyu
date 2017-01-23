@@ -114,23 +114,8 @@ a:VISITED {
 			</table>
 		</form>
 	</div>
-	<%
-		if (request.getMethod().equalsIgnoreCase("GET"))
-			return;
-	%>
-
-	<%
-		String custid = (String) session.getAttribute("custid");
-		if (custid.length() != 0) {
-	%>
-	<h1>${custid }</h1>
-	<script>
-	 	login_msg();
-	 	window.close();
-		opener.location.reload();
-	</script>
-	<%
-		}
-	%>
+	<div id="div_bot">
+	<h3>로그인로그인로그인<br>로그인로그인로그인</h3>
+	</div>
 </body>
 </html>

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +17,25 @@ public class BoardDAO {
 		List<Board> list = dao.list(14, 20);
 		System.out.println(list);
 		System.out.println(list.size());
+	}
+
+	// 전체 게시글 갯수 가져오기(다음 페이지 존재유무 확인용)
+	public int getNumberOfContent() {
+		int result = 0;
+		Connection con = ConnectionManager.getConnection();
+		String sql = "select count(boardnum) result from board2";
+		try {
+			Statement stmt = con.createStatement();
+			ResultSet rs = stmt.executeQuery(sql);
+			if (rs.next()) {
+				result = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(con);
+		}
+		return result;
 	}
 
 	// 게시글 목록 가져오기

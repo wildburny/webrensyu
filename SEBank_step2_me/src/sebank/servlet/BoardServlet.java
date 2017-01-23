@@ -40,11 +40,18 @@ public class BoardServlet extends HttpServlet {
 			int end = start + count - 1;
 
 			List<Board> list = new BoardDAO().list(start, end);
+			int numOfContent = new BoardDAO().getNumberOfContent();
+
+			if (end > numOfContent) {
+				request.setAttribute("isOver", "true");
+			} else {
+				request.setAttribute("isOver", "false");
+			}
 			request.setAttribute("list", list);
 			request.setAttribute("page", page);
-			
+
 			request.getRequestDispatcher("board_list.jsp").forward(request, response);
-			
+
 		}
 	}
 

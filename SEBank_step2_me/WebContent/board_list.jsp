@@ -44,7 +44,8 @@ table {
 }
 
 th, td {
-	font-weight: bolder; text-align : left;
+	font-weight: bolder;
+	text-align: left;
 	padding: 8px;
 	text-align: left;
 }
@@ -95,11 +96,28 @@ a:VISITED {
 		</table>
 		<%
 			int ipage = (int) request.getAttribute("page");
+			String isOver = (String) request.getAttribute("isOver");
 		%>
-		<br>
-		<br> <a href="BoardServlet?action=list&page=<%=ipage - 1%>">이전
-			페이지</a>&nbsp; <a href="BoardServlet?action=list&page=<%=ipage + 1%>">다음
-			페이지</a>&nbsp; <a href="index.jsp">홈으로</a>
+		<br> <br>
+		<%
+			if ((ipage - 1) == 0 && isOver.equals("false")) {
+		%>
+		<a href="BoardServlet?action=list&page=<%=ipage + 1%>">다음 페이지</a>&nbsp;
+		<a href="index.jsp">홈으로</a>
+		<%
+			} else if((ipage - 1) != 0 && isOver.equals("false")) {
+		%>
+		<a href="BoardServlet?action=list&page=<%=ipage - 1%>">이전 페이지</a>&nbsp;
+		<a href="BoardServlet?action=list&page=<%=ipage + 1%>">다음 페이지</a>&nbsp;
+		<a href="index.jsp">홈으로</a>
+		<%
+			} else if((ipage - 1) != 0 && isOver.equals("true")){
+		%>
+		<a href="BoardServlet?action=list&page=<%=ipage - 1%>">이전 페이지</a>&nbsp;
+		<a href="index.jsp">홈으로</a>
+		<%
+			}
+		%>
 	</div>
 	<div id="div_bot">기본적인 매너는 지킵시다.</div>
 </body>

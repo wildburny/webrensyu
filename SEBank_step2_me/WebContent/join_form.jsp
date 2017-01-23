@@ -186,5 +186,10 @@ a:VISITED {
 	<%
 		}
 	%>
+	<div id="div_bot">
+		<h3>
+			회원가입회원가입회원가입<br>회원가입회원가입회원가입
+		</h3>
+	</div>
 </body>
 </html>
