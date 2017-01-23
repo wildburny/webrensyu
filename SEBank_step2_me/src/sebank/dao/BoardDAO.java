@@ -12,13 +12,6 @@ import sebank.vo.Board;
 
 public class BoardDAO {
 
-	public static void main(String[] args) {
-		BoardDAO dao = new BoardDAO();
-		List<Board> list = dao.list(14, 20);
-		System.out.println(list);
-		System.out.println(list.size());
-	}
-
 	// 전체 게시글 갯수 가져오기(다음 페이지 존재유무 확인용)
 	public int getNumberOfContent() {
 		int result = 0;
