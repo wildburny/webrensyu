@@ -6,23 +6,39 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext"
 	rel="stylesheet" type="text/css">
-<title>타이틀은타이틀</title>
+<title>타이틀은 타이틀</title>
 <style>
+body {
+	background-color: #588c7e;
+}
+
 #div_header {
+	font-size: 30px;
+	color: white;
 	font-family: 'Lobster';
-	background-color: #ff9400;
+	background-color: #d96459;
 	margin-top: 0;
 	padding: 20px 20px 20px 40px;
 }
 
 #div_middle {
-	background-color: #f2f2f2;
+	background-color: #f2e394;
 	padding: 20px 20px 20px 40px;
 }
 
-ul {
+#div_bot {
+	text-align: center;
+	padding: 2%;
+	color: white;
+	font-size: 50px;
 	font-weight: bolder;
-	color: black;
+	color: white;
+}
+
+ul {
+	font-size: 20px;
+	font-weight: bolder;
+	color: white;
 }
 
 a:VISITED {
@@ -30,7 +46,7 @@ a:VISITED {
 }
 
 h3 {
-	color: #ff9400;
+	color: #d96459;
 }
 </style>
 </head>
@@ -46,7 +62,7 @@ h3 {
 		<%
 			if (custid != null) {
 		%>
-		<h3>${custid }님 접속중...!</h3>
+		<h3>★${custid }님 접속중★</h3>
 		<%-- <h3><%= custid %>님 접속중...!</h3> --%>
 		<%
 			}
@@ -71,6 +87,9 @@ h3 {
 				}
 			%>
 		</ul>
+	</div>
+	<div id="div_bot">
+		<p>가나다라마바사<br>아자차카타파하<br>하파타카차자아<br>사바마라다나가</p>
 	</div>
 
 
