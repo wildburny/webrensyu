@@ -7,21 +7,56 @@
 	href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext"
 	rel="stylesheet" type="text/css">
 <style type="text/css">
+body {
+	background-color: #588c7e;
+}
+
 #div_header {
+	font-size: 30px;
+	color: white;
 	font-family: 'Lobster';
-	background-color: #ff9400;
+	background-color: #d96459;
 	margin-top: 0;
 	padding: 20px 20px 20px 40px;
 }
 
 #div_middle {
-	background-color: #f2f2f2;
+	background-color: #f2e394;
 	padding: 20px 20px 20px 40px;
+	overflow-x: auto;
 }
 
-td {
-	font-weight: bold;
+#div_bot {
+	text-align: center;
+	padding: 2%;
+	color: white;
+	font-size: 50px;
+	font-weight: bolder;
+	color: white;
+}
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th, td {
+	font-weight: bolder;
 	text-align: left;
+	padding: 8px;
+	text-align: left;
+}
+
+tr:nth-child(even) {
+	background-color: #f2f2f2
+}
+
+a {
+	font-weight: bolder;
+}
+
+a:VISITED {
+	color: black;
 }
 </style>
 <script type="text/javascript">
@@ -71,7 +106,7 @@ td {
 					<tr height="50">
 						<td colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input
 							type="submit" value="로그인"> <input type="button"
-							value="돌아가기" onclick="window.close();">
+							value="돌아가기" onclick="history.go(-1);">
 						</td>
 					</tr>
 

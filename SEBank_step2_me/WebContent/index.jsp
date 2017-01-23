@@ -24,6 +24,7 @@ body {
 #div_middle {
 	background-color: #f2e394;
 	padding: 20px 20px 20px 40px;
+	
 }
 
 #div_bot {

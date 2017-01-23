@@ -9,26 +9,56 @@
 	rel="stylesheet" type="text/css">
 <title>회원정보 수우정</title>
 <style>
+body {
+	background-color: #588c7e;
+}
+
 #div_header {
+	font-size: 30px;
+	color: white;
 	font-family: 'Lobster';
-	background-color: #ff9400;
+	background-color: #d96459;
 	margin-top: 0;
-	margin-bottom: 15px;
 	padding: 20px 20px 20px 40px;
 }
 
 #div_middle {
-	background-color: #f2f2f2;
+	background-color: #f2e394;
 	padding: 20px 20px 20px 40px;
+	overflow-x: auto;
 }
 
-li {
+#div_bot {
+	text-align: center;
+	padding: 2%;
+	color: white;
+	font-size: 50px;
+	font-weight: bolder;
+	color: white;
+}
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+th, td {
+	font-weight: bolder;
+	text-align: left;
+	padding: 8px;
 	text-align: left;
 }
 
-td {
-	font-weight: bold;
-	text-align: left;
+tr:nth-child(even) {
+	background-color: #f2f2f2
+}
+
+a {
+	font-weight: bolder;
+}
+
+a:VISITED {
+	color: black;
 }
 </style>
 </head>
@@ -36,7 +66,6 @@ td {
 	<%
 		Customer c = (Customer) request.getAttribute("customer");
 		String custid = c.getCustid();
-		
 	%>
 
 	<div id="div_header">
@@ -49,7 +78,7 @@ td {
 				<tr height="50">
 					<td>고객ID</td>
 					<td><input type="text" name="custid" id="custid"
-						readonly="readonly" value="<%=custid %>">
+						readonly="readonly" value="<%=custid%>">
 				</tr>
 				<tr height="50">
 					<td>비밀번호</td>
@@ -62,42 +91,46 @@ td {
 				</tr>
 				<tr height="50">
 					<td>이름</td>
-					<td><input type="text" name="name" id="name" value="${customer.name }"></td>
+					<td><input type="text" name="name" id="name"
+						value="${customer.name }"></td>
 				</tr>
 				<tr height="50">
 					<td>E-mail</td>
-					<td><input type="text" name="email" id="email" value="${customer.email }"></td>
+					<td><input type="text" name="email" id="email"
+						value="${customer.email }"></td>
 				</tr>
 				<tr height="50">
 					<td>회원구분</td>
 					<td>
-					<%
-					String division = c.getDivision();
-					if(division.equals("personal")){
-					%>
-					<input type="radio" name="division" value="personal" checked="checked" disabled="disabled"> 개인 
-					<input type="radio" name="division"	value="company" disabled="disabled"> 법인
-					<%
-					} else {
-					%>
-					<input type="radio" name="division" value="personal" disabled="disabled"> 개인 
-					<input type="radio" name="division"	value="company" checked="checked" disabled="disabled"> 법인
-					<%
-					}
-					%>
+						<%
+							String division = c.getDivision();
+							if (division.equals("personal")) {
+						%> <input type="radio" name="division" value="personal"
+						checked="checked" disabled="disabled"> 개인 <input
+						type="radio" name="division" value="company" disabled="disabled">
+						법인 <%
+ 	} else {
+ %> <input type="radio" name="division" value="personal"
+						disabled="disabled"> 개인 <input type="radio"
+						name="division" value="company" checked="checked"
+						disabled="disabled"> 법인 <%
+ 	}
+ %>
 					</td>
 				</tr>
 				<tr height="50">
 					<td>식별번호</td>
-					<td><input type="text" name="idno" id="idno" readonly="readonly" value="${customer.idno }" disabled="disabled"></td>
+					<td><input type="text" name="idno" id="idno"
+						readonly="readonly" value="${customer.idno }" disabled="disabled"></td>
 				</tr>
 				<tr height="50">
 					<td>주소</td>
-					<td><input type="text" name="address" id="address" value="${customer.address }"></td>
+					<td><input type="text" name="address" id="address"
+						value="${customer.address }"></td>
 				</tr>
 				<tr height="50">
-					<td colspan="2"><input type="submit" value="정보수정"> 
-					<input type="reset" value="다시 쓰기"></td>
+					<td colspan="2"><input type="submit" value="정보수정"> <input
+						type="reset" value="다시 쓰기"></td>
 				</tr>
 			</table>
 		</form>
