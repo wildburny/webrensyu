@@ -82,14 +82,16 @@ h3 {
 			<br>
 			<li><a href="CustomerServlet?action=update_form">개인정보수정</a></li>
 			<br>
-			<li><a href="#">게시판</a></li>
+			<li><a href="BoardServlet?action=list">게시판</a></li>
 			<%
 				}
 			%>
 		</ul>
 	</div>
 	<div id="div_bot">
-		<p>가나다라마바사<br>아자차카타파하<br>하파타카차자아<br>사바마라다나가</p>
+		<p>
+			가나다라마바사<br>아자차카타파하<br>하파타카차자아<br>사바마라다나가
+		</p>
 	</div>
 
 

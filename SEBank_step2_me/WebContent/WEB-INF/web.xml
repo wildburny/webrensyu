@@ -4,9 +4,11 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	id="WebApp_ID" version="3.1">
 	<display-name>SEBank_step2_me</display-name>
+	
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
+	
 	<servlet>
 		<servlet-name>cs</servlet-name>
 		<servlet-class>sebank.servlet.CustomerServlet</servlet-class>
@@ -15,4 +17,14 @@
 		<servlet-name>cs</servlet-name>
 		<url-pattern>/CustomerServlet</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>bs</servlet-name>
+		<servlet-class>sebank.servlet.BoardServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>bs</servlet-name>
+		<url-pattern>/BoardServlet</url-pattern>
+	</servlet-mapping>
+	
 </web-app>
