@@ -42,6 +42,15 @@ ul {
 	color: white;
 }
 
+a {
+	font-weight: bolder;
+	text-decoration: none;
+}
+
+a:HOVER{
+	text-decoration: underline;
+}
+
 a:VISITED {
 	color: black;
 }
