@@ -85,9 +85,9 @@ public class BoardDAO {
 		}
 		return result;
 	}
-	
-	//게시글 읽기
-	public Board read(int boardNum){
+
+	// 게시글 읽기
+	public Board read(int boardNum) {
 		Board b = null;
 		Connection con = ConnectionManager.getConnection();
 		String sql = "select boardnum, id, title, content, to_char(inputdate,'yyyy-mm-dd') as inputdate, hits from board2 where boardnum = ?";
@@ -109,6 +109,21 @@ public class BoardDAO {
 			ConnectionManager.close(con);
 		}
 		return b;
+	}
+
+	// 조회수 증가
+	public void addHits(int boardNum) {
+		Connection con = ConnectionManager.getConnection();
+		String sql = "update board2 set hits = hits + 1 where boardnum = ?";
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, boardNum);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(con);
+		}
 	}
 
 }

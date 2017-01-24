@@ -27,6 +27,7 @@ body {
 	background-color: #f2e394;
 	padding: 20px 20px 20px 40px;
 	overflow-x: auto;
+	text-align: right;
 }
 
 #div_bot {
@@ -76,7 +77,7 @@ a:VISITED {
 		<%
 			if (session.getAttribute("custid") != null) {
 		%>
-		<a href="BoardServlet?action=writeForm"><span style="width: 10px">글쓰기</span></a>
+		<a href="BoardServlet?action=writeForm"><span style="margin-right: 40px; font-size: large;">글쓰기</span></a>
 		<%
 			}
 		%>

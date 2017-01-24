@@ -67,7 +67,11 @@ public class BoardServlet extends HttpServlet {
 		} else if (action.equals("read")) {
 			String num = request.getParameter("boardNum");
 			int boardNum = Integer.parseInt(num);
-			Board b = new BoardDAO().read(boardNum);
+			BoardDAO dao = new BoardDAO();
+			//조회수 증가
+			dao.addHits(boardNum);
+			//글 읽어오기
+			Board b = dao.read(boardNum);
 			request.setAttribute("board", b);
 			request.getRequestDispatcher("boardRead.jsp").forward(request, response);
 

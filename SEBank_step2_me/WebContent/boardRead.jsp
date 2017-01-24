@@ -107,8 +107,19 @@ textarea {
 				</td>
 			</tr>
 		</table>
-		<br> <span style="margin-left: 150px; margin-right: 150px;">
-			<a href="BoardServlet?action=list">목록보기</a>&nbsp;&nbsp;<a href="#">수정</a>&nbsp;&nbsp;<a href="#">삭제</a>
+		
+		<br> <span style="margin-left: 10px; margin-right: 10px;">
+			<a href="BoardServlet?action=list">목록보기</a>&nbsp;&nbsp;
+		<%
+		String custid = (String) session.getAttribute("custid");
+		String id = ((Board)request.getAttribute("board")).getId();
+		if(custid.equals(id)){
+		%>
+			<a href="#">수정</a>&nbsp;&nbsp;
+			<a href="#">삭제</a>
+		<%
+			}
+		%>
 		</span> <br>
 		<br>
 			<form action="BoardServlet?action=reply">
