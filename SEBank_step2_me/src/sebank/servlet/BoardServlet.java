@@ -52,6 +52,25 @@ public class BoardServlet extends HttpServlet {
 
 			request.getRequestDispatcher("board_list.jsp").forward(request, response);
 
+		} else if (action.equals("writeForm")) {
+			request.getRequestDispatcher("boardWriteForm.jsp").forward(request, response);
+		} else if (action.equals("write")) {
+			String id = (String) request.getSession().getAttribute("custid");
+			String title = request.getParameter("title");
+			String content = request.getParameter("content");
+			Board b = new Board(0, id, title, content, null, 0);
+			if (new BoardDAO().write(b) != 0) {
+				out.println("<script>alert('글쓰기 성공!');" + "location.href='BoardServlet?action=list';" + "</script>");
+			} else {
+				out.println("<script>alert('글쓰기 실패!');" + "history.go(-1);" + "</script>");
+			}
+		} else if (action.equals("read")) {
+			String num = request.getParameter("boardNum");
+			int boardNum = Integer.parseInt(num);
+			Board b = new BoardDAO().read(boardNum);
+			request.setAttribute("board", b);
+			request.getRequestDispatcher("boardRead.jsp").forward(request, response);
+
 		}
 	}
 

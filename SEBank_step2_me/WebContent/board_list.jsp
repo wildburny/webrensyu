@@ -69,6 +69,17 @@ a:VISITED {
 	</div>
 	<br>
 	<div id="div_middle">
+		<%
+			int ipage = (int) request.getAttribute("page");
+			String isOver = (String) request.getAttribute("isOver");
+		%>
+		<%
+			if (session.getAttribute("custid") != null) {
+		%>
+		<a href="BoardServlet?action=writeForm"><span style="width: 10px">글쓰기</span></a>
+		<%
+			}
+		%>
 		<table>
 			<tr>
 				<td>번호</td>
@@ -84,20 +95,17 @@ a:VISITED {
 			%>
 			<tr>
 				<td><%=b.getBoardnum()%></td>
-				<td><%=b.getTitle()%></td>
+				<td><a href="BoardServlet?action=read&boardNum=<%=b.getBoardnum()%>"><%=b.getTitle()%></a></td>
 				<td><%=b.getId()%></td>
 				<td><%=b.getHits()%></td>
 				<td><%=b.getInputdate()%></td>
 				<%
-					}
+						}
 					}
 				%>
 			
 		</table>
-		<%
-			int ipage = (int) request.getAttribute("page");
-			String isOver = (String) request.getAttribute("isOver");
-		%>
+
 		<br> <br>
 		<%
 			if ((ipage - 1) == 0 && isOver.equals("false")) {
@@ -105,13 +113,13 @@ a:VISITED {
 		<a href="BoardServlet?action=list&page=<%=ipage + 1%>">다음 페이지</a>&nbsp;
 		<a href="index.jsp">홈으로</a>
 		<%
-			} else if((ipage - 1) != 0 && isOver.equals("false")) {
+			} else if ((ipage - 1) != 0 && isOver.equals("false")) {
 		%>
 		<a href="BoardServlet?action=list&page=<%=ipage - 1%>">이전 페이지</a>&nbsp;
 		<a href="BoardServlet?action=list&page=<%=ipage + 1%>">다음 페이지</a>&nbsp;
 		<a href="index.jsp">홈으로</a>
 		<%
-			} else if((ipage - 1) != 0 && isOver.equals("true")){
+			} else if ((ipage - 1) != 0 && isOver.equals("true")) {
 		%>
 		<a href="BoardServlet?action=list&page=<%=ipage - 1%>">이전 페이지</a>&nbsp;
 		<a href="index.jsp">홈으로</a>
