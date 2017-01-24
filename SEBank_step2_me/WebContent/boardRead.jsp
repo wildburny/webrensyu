@@ -107,10 +107,14 @@ textarea {
 				</td>
 			</tr>
 		</table>
-		<br>
 		<br> <span style="margin-left: 150px; margin-right: 150px;">
-			<a href="#">목록보기</a>&nbsp;&nbsp;<a href="#">수정</a>&nbsp;&nbsp;<a href="#">삭제</a>
-		</span>
+			<a href="BoardServlet?action=list">목록보기</a>&nbsp;&nbsp;<a href="#">수정</a>&nbsp;&nbsp;<a href="#">삭제</a>
+		</span> <br>
+		<br>
+			<form action="BoardServlet?action=reply">
+				<input type="text" name="reply" size="50">&nbsp;&nbsp;
+				<input type="submit" value="리플달기">
+			</form>
 	</div>
 	<div id="div_bot">읽어보자!</div>
 </body>
