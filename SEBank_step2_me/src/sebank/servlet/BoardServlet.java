@@ -68,13 +68,34 @@ public class BoardServlet extends HttpServlet {
 			String num = request.getParameter("boardNum");
 			int boardNum = Integer.parseInt(num);
 			BoardDAO dao = new BoardDAO();
-			//조회수 증가
+			// 조회수 증가
 			dao.addHits(boardNum);
-			//글 읽어오기
+			// 글 읽어오기
 			Board b = dao.read(boardNum);
 			request.setAttribute("board", b);
 			request.getRequestDispatcher("boardRead.jsp").forward(request, response);
-
+		} else if (action.equals("delete")) {
+			int boardNum = Integer.parseInt(request.getParameter("boardNum"));
+			if (new BoardDAO().delete(boardNum) != 0) {
+				response.sendRedirect("BoardServlet?action=list");
+			} else {
+				response.sendRedirect("BoardServlet?action=list");
+			}
+		} else if (action.equals("updateForm")) {
+			int boardNum = Integer.parseInt(request.getParameter("boardNum"));
+			Board b = new BoardDAO().read(boardNum);
+			request.setAttribute("board", b);
+			request.getRequestDispatcher("boardUpdateForm.jsp").forward(request, response);
+		} else if (action.equals("update")) {
+			int boardNum = Integer.parseInt(request.getParameter("boardNum"));
+			String title = request.getParameter("title");
+			String content = request.getParameter("content");
+			Board b = new Board(boardNum, null, title, content, null, 0);
+			if (new BoardDAO().update(b) != 0) {
+				response.sendRedirect("BoardServlet?action=list");
+			} else {
+				response.sendRedirect("BoardServlet?action=list");
+			}
 		}
 	}
 

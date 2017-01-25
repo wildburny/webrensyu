@@ -44,3 +44,15 @@ Select * from
 				Select boardnum, id, title, content, to_char(inputdate, 'yyyy/mm/dd') as inputdate, hits from board2
 			) b
 	) where r between 10 and 20;
+	
+	
+create table reply2(
+	replynum number primary key
+	,boardnum number references board2 on delete cascade
+	,id varchar2(20) not null
+	,text varchar2(200) not null
+	,inputdate date default sysdate
+)
+
+drop table reply2;
+

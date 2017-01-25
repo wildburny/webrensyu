@@ -126,4 +126,39 @@ public class BoardDAO {
 		}
 	}
 
+	// 글 삭제
+	public int delete(int boardNum) {
+		Connection con = ConnectionManager.getConnection();
+		String sql = "delete board2 where boardnum = ?";
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, boardNum);
+			return pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(con);
+		}
+		return 0;
+	}
+
+	// 글 수정
+	public int update(Board b) {
+		Connection con = ConnectionManager.getConnection();
+		String sql = "update board2 set title = ?, content = ? where boardnum = ?";
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, b.getTitle());
+			pstmt.setString(2, b.getContent());
+			pstmt.setInt(3, b.getBoardnum());
+			return pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(con);
+		}
+		return 0;
+	}
+
 }

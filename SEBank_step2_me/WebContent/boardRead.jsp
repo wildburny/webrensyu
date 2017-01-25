@@ -120,8 +120,8 @@ textarea {
 		String id = ((Board)request.getAttribute("board")).getId();
 		if(custid.equals(id)){
 		%>
-			<a href="#">수정</a>&nbsp;&nbsp;
-			<a href="#">삭제</a>
+			<a href="BoardServlet?action=updateForm&boardNum=<%= b.getBoardnum() %>">수정</a>&nbsp;&nbsp;
+			<a href="BoardServlet?action=delete&boardNum=<%= b.getBoardnum()%>">삭제</a>
 		<%
 			}
 		%>
