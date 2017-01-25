@@ -56,3 +56,6 @@ create table reply2(
 
 drop table reply2;
 
+create sequence reply2_seq
+start with 1
+increment by 1

@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import sebank.vo.Board;
+import sebank.vo.Reply;
 
 public class BoardDAO {
 
@@ -161,4 +162,58 @@ public class BoardDAO {
 		return 0;
 	}
 
+	// 리플 등록
+	public int insertReply(Reply r) {
+		Connection con = ConnectionManager.getConnection();
+		String sql = "insert into reply2(replynum, boardnum, id, text, inputdate)"
+				+ " values(reply2_seq.nextval, ?, ?, ?, sysdate)";
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, r.getBoardnum());
+			pstmt.setString(2, r.getId());
+			pstmt.setString(3, r.getText());
+			return pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(con);
+		}
+		return 0;
+	}
+
+	// 리플 삭제
+	public int deleteReply(int replyNum) {
+		Connection con = ConnectionManager.getConnection();
+		String sql = "delete reply2 where replynum = ?";
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, replyNum);
+			return pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(con);
+		}
+		return 0;
+	}
+
+	// 리플 불러오기
+	public ArrayList<Reply> replyList(int boardNum) {
+		ArrayList<Reply> replyList = new ArrayList<>();
+		Connection con = ConnectionManager.getConnection();
+		String sql = "select replynum, boardnum, id, text, to_char(inputdate,'yyyy-mm-dd') as inputdate from reply2 where boardnum = ?";
+		try {
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, boardNum);
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				replyList.add(new Reply(rs.getInt(1), boardNum, rs.getString(3), rs.getString(4), rs.getString(5)));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			ConnectionManager.close(con);
+		}
+		return replyList;
+	}
 }

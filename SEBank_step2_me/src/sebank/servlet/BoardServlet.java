@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import sebank.dao.BoardDAO;
 import sebank.vo.Board;
+import sebank.vo.Reply;
 
 public class BoardServlet extends HttpServlet {
 
@@ -72,6 +73,10 @@ public class BoardServlet extends HttpServlet {
 			dao.addHits(boardNum);
 			// 글 읽어오기
 			Board b = dao.read(boardNum);
+			// 리플 리스트 가져오기
+			List<Reply> reList = dao.replyList(boardNum);
+
+			request.setAttribute("reList", reList);
 			request.setAttribute("board", b);
 			request.getRequestDispatcher("boardRead.jsp").forward(request, response);
 		} else if (action.equals("delete")) {
@@ -95,6 +100,28 @@ public class BoardServlet extends HttpServlet {
 				response.sendRedirect("BoardServlet?action=list");
 			} else {
 				response.sendRedirect("BoardServlet?action=list");
+			}
+		} else if (action.equals("replyDelete")) {
+			int replyNum = Integer.parseInt(request.getParameter("replyNum"));
+			int boardNum = Integer.parseInt(request.getParameter("boardNum"));
+			if (new BoardDAO().deleteReply(replyNum) != 0) {
+				out.println("<script>alert('댓글 삭제 성공!'); location.href='BoardServlet?action=read&boardNum=" + boardNum
+						+ "';" + "</script>");
+			} else {
+				out.println("<script>alert('댓글 삭제 실패!'); location.href='BoardServlet?action=read&boardNum=" + boardNum
+						+ "';" + "</script>");
+			}
+		} else if (action.equals("insertReply")) {
+			int boardNum = Integer.parseInt(request.getParameter("boardNum"));
+			String id = request.getParameter("id");
+			String text = request.getParameter("text");
+			Reply r = new Reply(0, boardNum, id, text, null);
+			if (new BoardDAO().insertReply(r) != 0) {
+				out.println("<script>alert('댓글 등록 성공!'); location.href='BoardServlet?action=read&boardNum=" + boardNum
+						+ "';" + "</script>");
+			} else {
+				out.println("<script>alert('댓글 등록 실패!'); location.href='BoardServlet?action=read&boardNum=" + boardNum
+						+ "';" + "</script>");
 			}
 		}
 	}

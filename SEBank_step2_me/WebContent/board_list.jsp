@@ -130,6 +130,10 @@ a:VISITED {
 		<a href="BoardServlet?action=list&page=<%=ipage - 1%>">이전 페이지</a>&nbsp;
 		<a href="index.jsp">홈으로</a>
 		<%
+			} else {
+		%>
+		<a href="index.jsp">홈으로</a>
+		<%
 			}
 		%>
 	</div>

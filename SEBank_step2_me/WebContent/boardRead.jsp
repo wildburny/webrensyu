@@ -1,3 +1,5 @@
+<%@page import="sebank.vo.Reply"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="sebank.vo.Board"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -127,10 +129,51 @@ textarea {
 		%>
 		</span> <br>
 		<br>
-			<form action="BoardServlet?action=reply">
-				<input type="text" name="reply" size="50">&nbsp;&nbsp;
-				<input type="submit" value="리플달기">
+		<!-- 댓글 영역 -->
+			<form action="BoardServlet" method="post">
+				<input type="hidden" name="action" value="insertReply">
+				<input type="hidden" name="id" value="${custid }">
+				<input type="hidden" name="boardNum" value="${board.boardnum }">
+				<input type="text" name="text" size="50">&nbsp;&nbsp;
+				<input type="submit" value="리플달기"> <br><br>
 			</form>
+		<%
+			ArrayList<Reply> reList = (ArrayList<Reply>) request.getAttribute("reList");
+		%>
+		<table>
+			<tr>
+				<th>ID</th>
+				<th>내용</th>
+				<th>등록시간</th>
+			</tr>
+			<%
+				if (reList != null) {
+					for (Reply r : reList) {
+			%>
+			<tr>
+				<td><%=r.getId() %></td>
+				<td><%=r.getText() %></td>
+				<td>
+				<%=r.getInputdate() %>
+				<%
+				if((r.getId().equals(custid))){
+				%>
+				<form action="BoardServlet" method="post">
+				<input type="hidden" name="action" value="replyDelete">
+				<input type="hidden" name="replyNum" value="<%=r.getReplynum() %>">
+				<input type="hidden" name="boardNum" value="<%=r.getBoardnum() %>">
+				<input type="submit" value="삭제">
+				</form>
+				<%
+				}
+				%>	
+				</td>
+			</tr>
+			<%
+				}
+			}
+			%>
+		</table>
 	</div>
 	<div id="div_bot">읽어보자!</div>
 </body>
