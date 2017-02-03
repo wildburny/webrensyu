@@ -13,6 +13,7 @@
 
 	<ol>
 		<li><a href="res">마자용</a></li>
+		<li><a href= "jstl1">JSTLの使い方について確認しましょう！</a>
 	</ol>
 </body>
 </html>
