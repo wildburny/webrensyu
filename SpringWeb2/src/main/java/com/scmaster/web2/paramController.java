@@ -30,4 +30,16 @@ public class paramController {
 		logger.info("address : {}", address);
 		return "redirect:/";
 	}
+
+	@RequestMapping(value = "param3", method = RequestMethod.GET)
+	public String param3() {
+		return "param3";
+	}
+
+	@RequestMapping(value = "param3", method = RequestMethod.POST)
+	public String param3(Person person, String etc) {
+		logger.info("person : {}", person);
+		logger.info("etc : {}", etc);
+		return "redirect:/";
+	}
 }
