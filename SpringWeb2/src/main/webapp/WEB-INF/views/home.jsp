@@ -15,5 +15,9 @@
 		<li><a href="res">마자용</a></li>
 		<li><a href= "jstl1">JSTLの使い方について確認しましょう！</a>
 	</ol>
+	
+	<ol>
+		<li><a href="param1?str=abcd&num=100">param1 사용</a></li>
+	</ol>
 </body>
 </html>
