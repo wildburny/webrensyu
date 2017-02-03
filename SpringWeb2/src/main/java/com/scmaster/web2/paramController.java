@@ -38,6 +38,7 @@ public class paramController {
 
 	@RequestMapping(value = "param3", method = RequestMethod.POST)
 	public String param3(Person person, String etc) {
+						// @requestParam 이라는 파라메터가 사실 앞에 붙어 있어야함.
 		logger.info("person : {}", person);
 		logger.info("etc : {}", etc);
 		return "redirect:/";
