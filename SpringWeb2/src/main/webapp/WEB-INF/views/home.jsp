@@ -18,6 +18,7 @@
 	
 	<ol>
 		<li><a href="param1?str=abcd&num=100">param1 사용</a></li>
+		<li><a href="param2">param2 사용</a></li>
 	</ol>
 </body>
 </html>
