@@ -25,6 +25,12 @@
     <li><a href="sessionTest2">세션테스트2</a></li>
     <li><a href="step1">세션어노테이션</a></li>
 </ol>
+<ol>
+    <li><a href="cookie1">쿠키 값 저장</a></li>
+    <li><a href="cookie2">쿠키 값 삭제</a></li>
+    <li><a href="cookie3">모든 쿠키 읽기</a></li>
+    <li><a href="cookie4">특정 쿠키 값 읽기</a></li>
+</ol>
 
 <p>${sessionScope.value1 }</p>
 
