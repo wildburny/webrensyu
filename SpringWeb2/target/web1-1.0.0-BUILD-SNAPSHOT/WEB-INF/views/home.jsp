@@ -23,7 +23,9 @@
 <ol>
     <li><a href="sessionTest">세션테스트</a></li>
     <li><a href="sessionTest2">세션테스트2</a></li>
+    <li><a href="step1">세션어노테이션</a></li>
 </ol>
+
 <p>${sessionScope.value1 }</p>
 
 <c:if test="${sessionScope.id == null }">
